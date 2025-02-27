@@ -1,0 +1,43 @@
+server:
+  port: 8989
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:sql/schema.sql
+      data-locations: classpath:sql/data.sql
+
+  jpa:
+    database: h2
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    root: INFO
+
+jwt:
+  secret: TWnoqIfZ1NrlHqzczoRAiLJna2zNdTwrRkOpdcyv1YgmILJNFZmaPlxHeZ5xEAc9Q7hV2mTBPxFPwNWe4ukhHQ==
+  refresh: sChdAPrg35nJ3/U6Z05znrkGTm/NubUv788wsUWXKKOkLzyKr4othAxcrU+xHphz4LT5g3P+t1bQWopXq9NcZA==
+  #10분
+  access-token-validity-in-seconds: 600
+  #1시간
+  refresh-token-validity-in-seconds: 3600
